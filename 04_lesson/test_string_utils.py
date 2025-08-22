@@ -23,7 +23,7 @@ class TestCapitalize:
     @pytest.mark.parametrize("input_str, expected", [
         ("", ""),  # пустая строка
         ("   ", "   "),  # только пробелы
-        (" Skypro", " Skypro"),  # пробел в начале
+        (" Skypro", " skypro"),  # пробел в начале - capitalize делает все буквы кроме первой строчными
     ])
     def test_capitalize_negative(self, input_str, expected):
         assert string_utils.capitalize(input_str) == expected
@@ -62,7 +62,7 @@ class TestContains:
         ("SkyPro", "S", True),
         ("SkyPro", "k", True),
         ("SkyPro", "Pro", True),  # подстрока
-        ("hello world", " ", True),  # пробел
+        ("hello", "", True),  # пустой символ - в Python пустая строка содержится в любой строке
         ("123", "2", True),  # цифры
     ])
     def test_contains_positive(self, string, symbol, expected):
