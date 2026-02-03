@@ -3,9 +3,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
+
 def test_calc_slow():
     driver = webdriver.Chrome()
     driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
+    
     wait = WebDriverWait(driver, 60)
     delay = wait.until(EC.presence_of_element_located((By.ID, "delay")))
     delay.clear()
