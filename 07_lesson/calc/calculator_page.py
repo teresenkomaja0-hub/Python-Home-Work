@@ -26,7 +26,9 @@ class CalculatorPage:
     def click_button(self, text):
         button = self.wait.until(EC.element_to_be_clickable(self.button_locator(text)))
         button.click()
-
-    def get_result(self):
-        return self.wait.until(EC.text_to_be_present_in_element(self.screen_locator, "15")) \
-            or self.driver.find_element(*self.screen_locator).text
+        
+def get_result(self):
+    # Ждем, пока результат не станет видимым (не обязательно именно "15")
+    self.wait.until(EC.visibility_of_element_located(self.screen_locator))
+    # Возвращаем текст
+    return self.driver.find_element(*self.screen_locator).text
