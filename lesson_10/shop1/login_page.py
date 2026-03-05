@@ -2,19 +2,19 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class LoginPage:
-    
-    """
-    Page Object для страницы входа в систему.
-    Предоставляет методы для авторизации пользователя.
-    """
 
-    def __init__(self, driver: WebDriver) -> None:
+class LoginPage:
+    """
+    Класс для работы со страницей авторизации (Login Page) сайта saucedemo.com
+    Содержит методы для открытия страницы и входа в систему
+    """
+    
+    def __init__(self, driver):
         """
-        Инициализация страницы авторизации.
+        Инициализация страницы авторизации
         
         Args:
-            driver: WebDriver - экземпляр Selenium WebDriver
+            driver: WebDriver - экземпляр драйвера браузера
         """
         self.driver = driver
         self.wait = WebDriverWait(driver, 15)
@@ -24,24 +24,22 @@ class LoginPage:
         self.password_input = (By.ID, "password")
         self.login_button = (By.ID, "login-button")
 
-
-    def open(self) -> None:
+    def open(self):
         """
-        Открывает страницу авторизации в браузере.
+        Открывает страницу авторизации в браузере
         
         Returns:
             None
         """
         self.driver.get(self.url)
 
-
     def login(self, username: str, password: str) -> None:
         """
-        Выполняет вход в систему с указанными учетными данными.
+        Выполняет вход в систему с указанными учетными данными
         
         Args:
             username: str - имя пользователя
-            password: str - пароль
+            password: str - пароль пользователя
             
         Returns:
             None
